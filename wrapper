@@ -9,8 +9,8 @@ function sigterm_handler() {
 trap "sigterm_handler; exit" TERM
 
 function entrypoint() {
-    service mysql start &
-    service apache2 start &
+    /usr/bin/mysqld_safe > /dev/null 2>&1 &
+    service apache2 start
     wait
 }
 
